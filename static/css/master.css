@@ -1,0 +1,111 @@
+html, body {
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+h1 {
+  font-weight: 800;
+  font-size: 1.5em;
+}
+
+h2 {
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 400;
+  font-size:1.2em;
+}
+
+p {
+  font-weight: 300;
+}
+
+.secondary-text {
+  font-weight: 200;
+}
+
+#main-navbar {
+  background-color: transparent !important;
+  padding: 1em 5em;
+  position: relative;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+}
+
+.nav-item {
+  font-size: 1.1em;
+  margin-right: 1em;
+}
+
+.expand{
+  position:relative;
+  text-decoration:none;
+  display:inline-block;
+}
+.expand:after {
+  display:block;
+  content: '';
+  border-bottom: solid 1px #000;
+  transform: scaleX(0);
+  transition: transform 250ms ease-in-out;
+  transform-origin:100% 50%
+}
+.expand:hover:after {
+  transform: scaleX(1);
+  transform-origin:0 50%;
+}
+
+.sign-in-btn {
+  border-color: black;
+  color: black;
+  border-radius: 24px;
+  width: 100px;
+}
+
+.sign-in-btn:hover {
+  background-color: black;
+}
+
+#hero {
+  min-height: 75vh;
+  background-image:url(../assets/hero-bg.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.hero-section {
+  padding: 5em 6em;
+}
+
+#heroImage {
+  position: relative;
+  width: 80%;
+  top: -10%;
+  max-width: 25rem;
+}
+
+.hero-btn {
+  width: 10em;
+  border-radius: 24px;
+}
+
+.hero-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.feature-section {
+  padding: 5em 6em;
+}
+
+@media only screen and (min-width: 1350px) {
+  section {
+    padding: 0 10%;
+  }
+}
