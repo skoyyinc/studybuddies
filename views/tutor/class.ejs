@@ -1,0 +1,97 @@
+<%- include("../include/navbar",{landingPage:false}) %>
+
+<section id="profile">
+    <nav id="profile-bar" class="navbar navbar-light">
+      <% if (thumbnail && thumbnail != "") { %>
+        <img src="<%=thumbnail%>" class="nav-brand user-thumbnail" />
+
+      <% } else { %>
+        <div class="acronym-thumbnail">
+          <h2 id="acronymThumb"></h2>
+        </div>
+      <% } %>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <h3 class="user-name text-light"><%= fullName %></h3>
+          <p class="text-light"><%= school %></p>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <button type="button" class="btn btn-light user-btn" onclick="location.href='/logout'">Log Out</button>
+      </ul>
+
+  </section>
+  <section id="dashboard">
+    <div class="row">
+      <div class="sidebar col-lg-3">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="sidebar-section">
+            <h6>MY PROFILE</h6>
+          </li>
+          <li>
+            <a href="/tutor/profile" class="nav-link" role="tab" >
+              Profile
+            </a>
+          </li>
+          <li class="sidebar-section">
+            <h6>MY CLASS</h6>
+          </li>
+          <li>
+            <a href="/tutor/class" class="nav-link active" role="tab" >
+              Class
+            </a>
+            <a href="/tutor/class/new" class="nav-link" role="tab">
+              Add New Class
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-content col-lg-9">
+        <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <h3 class="mb-3">My Class</h3>
+          <div class="row w-75">
+            <% for (let i in classes) { %>
+            <div class="col-6">
+
+              <div class="row result-card mb-2 ms-1" role="button" style="width:20rem;height: 9rem" onclick="location.href='/classroom?id=<%=classes[i]._id%>'">
+                  <div class="col-9">
+                    <h3 class="mb-2"><%=classes[i].subject%></h3>
+                    <p class="mb-1"><%= classes[i].students.length %> Students</p>
+                    <p class="mb-1 secondary-text text-success"><%= classes[i].start.toLocaleDateString("en-US",options) %></p>
+                    <p class="mb-1 secondary-text text-success"><%= classes[i].start.toLocaleTimeString("id-ID",timeOpt) %> - <%= classes[i].end.toLocaleTimeString("id-ID",timeOpt) %></p>
+                  </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <%- include("../include/footer") %>
+
+  <script type="text/javascript" src="../../static/js/profile.js">
+  </script>
+
+  <% if (!thumbnail || thumbnail === ""){ %>
+  <script type="text/javascript">
+    function createAcronym(x) {
+      let text = "";
+      x = x.split(' ');
+      for (i = 0; i < 2; i++) {
+        if (x[i]) {
+          text += x[i].substr(0, 1);
+        }
+      }
+
+      $("#acronymThumb").html(text);
+    }
+    createAcronym("<%= fullName %>");
+  </script>
+  <% } %>

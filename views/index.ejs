@@ -3,37 +3,136 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Study Buddies | By Students For Students</title>
   <%- include("include/cdn") %>
-  <!-- CSS -->
-  <link rel="stylesheet" href="/static/css/master.css">
 </head>
 
 <body>
   <section id="hero">
-    <%- include("include/navbar") %>
+    <%- include("include/navbar",{landingPage:true}) %>
     <div class="container-fluid hero-section">
       <div class="row">
         <div class="col-lg-6" style="padding-right:10%;">
           <p class="secondary-text">Interactive Tutoring</p>
           <h1 class="mb-3" style="font-size:2em">Effective <br>Online Way</h1>
           <h3 class="mb-4">A flexible way to find tutors to help you with your study</h3>
-          <button type="button" class="btn btn-dark hero-btn">Start Learning &#8594;</button>
-          <button type="button" class="btn btn-dark hero-btn">Join as Tutor &#8594;</button>
+          <button type="button" class="btn btn-dark hero-btn" onclick="location.href='/signup'">Start Learning &#8594;</button>
+          <button type="button" class="btn btn-dark hero-btn" onclick="location.href='/signup?istutor=1'">Join as Tutor &#8594;</button>
         </div>
         <div class="col-lg-6 d-flex justify-content-center">
-          <img src="/static/assets/hero-img.svg" alt="" id="heroImage">
+          <img src="/static/assets/hero-bg.svg" alt="" id="heroImage">
         </div>
       </div>
     </div>
   </section>
 
   <section id="feature">
-    <div class="container-fluid feature-section">
+    <div class="container-fluid feature-section ">
       <h1 class="text-center mb-2">What StudyBuddies Offer</h1>
-      <p class="text-center">There are many features here <span style="color: #F44A6E;"><strong>to help you</strong></span> with your study</p>
+      <p class="text-center mb-5">There are many features here <span style="color: #F44A6E;"><strong>to help you</strong></span> with your study</p>
+      <div class="row">
+        <div class="col-lg-4 px-5">
+          <div class="feature-box text-center">
+            <img src="/static/assets/hero-help.svg" alt="" class="" style="width:85%;">
+            <h1 class="mt-5">We Help Students</h1>
+            <p>Interactive study with verified tutors! Helping you is our main goal.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 px-5 text-center">
+          <div class="feature-box text-center">
+            <img src="/static/assets/hero-save.svg" alt="" class="">
+            <h1 class="mt-5">Save Money</h1>
+            <p>Keep more allowance money, because learning here is absolutely FREE!</p>
+          </div>
+        </div>
+        <div class="col-lg-4 px-5 text-center">
+          <div class="feature-box text-center">
+            <img src="/static/assets/hero-flex.svg" alt="" style="width:98%;">
+            <h1 class="mt-5">Flexible Learning</h1>
+            <p>Learn anything you want, anytime you choose.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
+
+  <section id="forlearners">
+    <div class="container-fluid forlearners-section d-flex justify-content-between">
+      <img src="/static/assets/learner-illus.svg" alt="" class="section-img" style="margin-left:5%;width:30%;">
+      <div class="section-text">
+        <p class="secondary-text mt-5">Learners</p>
+        <h1 style="font-size:2em;">The Easiest Help</h1>
+        <p class="pe-5 mt-3" style="font-size:1.2em;">Technology is transforming learning.
+          <br>It’s helping us to learn from anyone,
+          at anytime. And here, it's FREE too!</p>
+        <button type="button" class="btn btn-dark hero-btn mt-3" onclick="location.href='/signup'">Start Learning &#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="fortutors">
+    <div class="container-fluid forlearners-section d-flex justify-content-between">
+
+      <div class="section-text" style="margin:0;margin-right:10%;margin-left:5%">
+        <p class="secondary-text mt-5">Tutors</p>
+        <h1 style="font-size:2em;">Upgrade Yourself</h1>
+        <p class="pe-5 mt-3" style="font-size:1.2em;">By helping others, you'll be helping yourself.
+          Whether it's to practice your teaching skills, or to develop your communication skills, you will definitely level up.</p>
+        <button type="button" class="btn btn-dark hero-btn mt-3" onclick="location.href='/signup?istutor=1'">Join as Tutors &#8594;</button>
+      </div>
+      <img src="/static/assets/tutor-illus.svg" alt="" class="section-img" style="margin-right:5%;width:40%;">
+    </div>
+  </section>
+
+  <section id="howitworks">
+    <div class="container-fluid howitworks-section text-center">
+      <div class="rounded-container ">
+        <h1 class="text-light">How It Works</h1>
+        <div class="row mt-4">
+          <div class="col-lg-4 px-5">
+            <div class="hiw-box text-center">
+              <img src="/static/assets/hiw1.svg" alt="" class="feature-img">
+              <h1 class="mt-5 text-light">Find a Tutor</h1>
+              <p class="text-light">Choose one of our verified tutors that you like</p>
+            </div>
+          </div>
+          <div class="col-lg-4 px-5 text-center">
+            <div class="hiw-box text-center">
+              <img src="/static/assets/hiw2.svg" alt="" class="feature-img">
+              <h1 class="mt-5 text-light">Join Their Class</h1>
+              <p class="text-light">Some tutors limit the maximum students in their class, so be quick!</p>
+            </div>
+          </div>
+          <div class="col-lg-4 px-5 text-center">
+            <div class="hiw-box text-center">
+              <img src="/static/assets/hiw3.svg" alt="" class="feature-img">
+              <h1 class="mt-5 text-light">Start Learning!</h1>
+              <p class="text-light">Join in the interactive classroom and start learning!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="joinus">
+    <div class="container-fluid text-center joinus-section">
+      <h1>Join StudyBuddies Today!</h1>
+      <div class="mt-5">
+        <button type="button" class="btn btn-dark hero-btn " style="width:25%;font-size: 1.5em" onclick="location.href='/signup'">As Learners &#8594;</button>
+      </div>
+      <div class="mt-3">
+        <button type="button" class="btn btn-dark hero-btn " style="width:25%;font-size: 1.5em" onclick="location.href='/signup?istutor=1'">As Tutors &#8594;</button>
+      </div>
+      <div class="mt-3">
+        <button type="button" class="btn btn-dark hero-btn " style="width:25%;font-size: 1.5em" onclick="location.href='#hero'">Back to Top</button>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <%- include("include/footer") %>
 
 </body>
 

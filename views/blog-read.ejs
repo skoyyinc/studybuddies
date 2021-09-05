@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <%-include("include/cdn")%>
+</head>
+
+<body>
+  <header>
+    <!-- Intro settings -->
+    <style>
+      #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 58px;
+      }
+
+      @media (max-width: 991px) {
+        #intro {
+          /* Margin to fix overlapping fixed navbar */
+          margin-top: 45px;
+        }
+      }
+    </style>
+
+    <!-- Navbar -->
+    <% if (loggedin) { %>
+      <%-include("include/navbar",{landingPage:false})%>
+    <% } else { %>
+      <%-include("include/navbar",{landingPage:true})%>
+    <% } %>
+
+    <!-- Navbar -->
+
+    <!-- Jumbotron -->
+    <div id="intro" class="p-5 text-start bg-light ">
+      <h2 class="ms-5 secondary-text text-primary" style="font-size:1.25em;" onclick="location.href='/blog'" role="button"><i class="fas fa-chevron-left me-2"></i>BLOG</h2>
+      <h1 class="ms-5 h2"><%=blog.title%></h1>
+      <p class="secondary-text ms-5">by <%= blog.author %> | <%= blog.timestamp.toLocaleDateString("en-US",options) %></p>
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="my-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section class="text-start" style="padding: 0 15em;">
+        <div class="px-1 py-1" style="border-style:solid;border-width:1px;border-color:#f1f1f1;">
+          <div class="w-100" style="max-height: 20em; overflow:hidden">
+            <img src="<%=blog.thumb%>" alt="" class="w-100">
+          </div>
+          <div class="px-5 pb-2 pt-3" style="line-height:2em;border-bottom-style:solid;border-bottom-width:1px;border-bottom-color:#f1f1f1;" >
+              <h3 class="secondary-text" style="opacity:70%; ">Article</h3>
+              <p><%-blog.content%></p>
+          </div>
+          <p class="secondary-text me-5 mt-2 text-end " style="font-size:.9em;opacity:70%;">by <%= blog.author %> | <%= blog.timestamp.toLocaleDateString("en-US",options) %></p>
+        </div>
+
+
+
+
+      </section>
+      <!--Section: Content-->
+
+      <!-- Pagination -->
+
+    </div>
+  </main>
+
+  <%- include("include/footer") %>
+  <!--Main layout-->
+
+</body>
+
+</html>

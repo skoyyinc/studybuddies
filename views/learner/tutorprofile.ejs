@@ -1,0 +1,67 @@
+<%- include("../include/navbar",{landingPage:false}) %>
+
+<section id="banner">
+  <div class="container-fluid banner-section">
+  </div>
+
+</section>
+<section id="tutorprofile">
+  <div class="container-fluid tutorprofile-section">
+    <div class="profile-wrapper d-flex justify-content-start">
+      <div class="">
+        <img src="/static/assets/user.png" alt="" style="width:8rem;position:relative;top:-50px;margin-left:5%;">
+        <div class="ms-4" style="position:relative;top:-10px;">
+          <h2 class="mt-0 "><%=user.fn%></h2>
+          <p><%=user.major%>, <%=user.school%></p>
+          <div class="d-flex">
+            <% for (let n in user.class) { %>
+              <p class="secondary-text text-primary"><%=user.class[n].subject%></p>
+              <% if (n === "2" || Number(n) === user.class.length-1) { break } else { %>
+                <i class="dot mx-2"></i>
+              <% } %>
+
+            <% } %>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="profile-wrapper container-fluid mt-3" style="min-height: 10rem;">
+      <div class="px-3 py-3">
+        <h3 class="secondary-text mb-3">About</h3>
+        <p style="font-weight:400;font-size:.9em;"><%=user.desc%></p>
+      </div>
+
+
+    </div>
+    <div class="profile-wrapper container-fluid mt-3" style="min-height: 10rem;">
+      <div class="px-3 py-3">
+        <h3 class="secondary-text mb-3">Class</h3>
+        <div class="row">
+          <% for (let i in classes) { %>
+            <div class="col px-2 mb-3">
+              <div class="result-card ms-1 px-2 " role="button" style="background-color:white;max-width:13rem;height: 9.5rem;overflow-x:scroll">
+                  <h3 class="mb-2 text-start ms-3" ><%=classes[i].subject%></h3>
+                  <p class="mb-1 secondary-text text-start text-primary ms-3" style="font-weight:400" ><i class="fa fa-calendar me-1"></i><%= classes[i].start.toLocaleDateString("en-US",options) %></p>
+                  <p class="mb-1 secondary-text text-start text-primary ms-3" ><i class="fa fa-clock me-1"></i><%= classes[i].start.toLocaleTimeString("id-ID",timeOpt) %> - <%= classes[i].end.toLocaleTimeString("id-ID",timeOpt) %> </p>
+                  <% if (classes[i].students.includes(userId)) { %>
+                    <button type="button" name="button" class="btn btn-dark px-2 py-1 ms-3" disabled>Already Joined</button>
+                  <% } else { %>
+                    <button type="button" name="button" class="btn btn-dark px-2 py-1 ms-3" onclick="location.href='/join?id=<%=classes[i]._id%>&returnto='+location.pathname">Join Class</button>
+                  <% } %>
+              </div>
+            </div>
+          <% } %>
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<%- include("../include/footer") %>

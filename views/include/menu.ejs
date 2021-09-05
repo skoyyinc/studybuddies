@@ -1,0 +1,27 @@
+<div class="sidebar col-lg-3">
+  <ul class="nav nav-pills flex-column mb-auto">
+    <li class="sidebar-section">
+      <h6>MY PROFILE</h6>
+    </li>
+    <li>
+      <a href="/profile" class="nav-link <% if (page==="learner/profile"){ %>
+        active
+      <% } %> " role="tab" >
+        Profile
+      </a>
+    </li>
+
+
+    <li class="sidebar-section">
+      <h6>MY STUDIES</h6>
+    </li>
+    <li>
+      <a href="/class" class="nav-link <% if (page==="learner/class"){ %>
+        active
+      <% } %> " role="tab" >
+        Class
+      </a>
+    </li>
+
+  </ul>
+</div>

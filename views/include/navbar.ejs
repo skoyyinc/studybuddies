@@ -1,24 +1,62 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="main-navbar">
   <div class="container-fluid">
-    <h1 class="navbar-brand me-4 my-0" href="#">StudyBuddies</h1>
+    <% if (landingPage) { %>
+      <a class="navbar-brand me-4 my-0" href="/"><h1 style="font-size:1.25em; margin:0;">StudyBuddies</h1></a>
+    <% } else { %>
+      <h1 class="navbar-brand me-4 my-0" href="#">StudyBuddies</h1>
+    <% } %>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <% if (!tutor) { %>
+          <li class="nav-item">
+            <a class="nav-link expand" aria-current="page" href="/find">Find Tutors</a>
+          </li>
+        <% } %>
+        <% if (landingPage) { %>
         <li class="nav-item">
-          <a class="nav-link expand" aria-current="page" href="#">Find Tutors</a>
+          <a class="nav-link expand" href="/signup?istutor=1">Be a Tutor</a>
         </li>
+        <% } %>
         <li class="nav-item">
-          <a class="nav-link expand" href="#">Be a Tutor</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link expand" href="#" >About</a>
+          <a class="nav-link expand" href="/blog">Blog</a>
         </li>
       </ul>
+      <% if (landingPage) { %>
       <div class="d-flex">
-        <button class="btn btn-outline-success sign-in-btn" type="button">Sign in</button>
+        <button class="btn btn-outline-dark sign-in-btn" type="button" onclick="location.href='/signin'">Sign in</button>
       </div>
+      <% } else { %>
+      <% if (!tutor) { %>
+      <div class="d-flex">
+        <button class="btn btn-dark hero-btn" type="button" onclick="location.href='/class'" style="width:9em;font-size:.9em;">My Studies</button>
+      </div>
+      <div class="d-flex">
+        <div class="circular--portrait" onclick="location.href='/profile'" role="button">
+          <% if (thumbnail && thumbnail != "") { %>
+            <img src="<%=thumbnail%>" />
+          <% } else { %>
+            <img src="/static/assets/user.png" />
+          <% } %>
+
+        </div>
+      </div>
+      <% } else { %>
+        <div class="d-flex">
+          <button class="btn btn-dark hero-btn" type="button" onclick="location.href='/tutor/class'" style="width:9em;font-size:.9em;">My Class</button>
+        </div>
+        <div class="d-flex">
+          <div class="circular--portrait" onclick="location.href='/tutor/profile'" role="button">
+            <img src="/static/assets/user.png" />
+          </div>
+        </div>
+      <%}%>
+
+      <% } %>
+
     </div>
   </div>
 

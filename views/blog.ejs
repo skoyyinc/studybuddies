@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <%-include("include/cdn")%>
+</head>
+
+<body>
+  <header>
+    <!-- Intro settings -->
+    <style>
+      #intro {
+        /* Margin to fix overlapping fixed navbar */
+        margin-top: 58px;
+      }
+
+      @media (max-width: 991px) {
+        #intro {
+          /* Margin to fix overlapping fixed navbar */
+          margin-top: 45px;
+        }
+      }
+    </style>
+
+    <!-- Navbar -->
+    <% if (loggedin) { %>
+      <%-include("include/navbar",{landingPage:false})%>
+    <% } else { %>
+      <%-include("include/navbar",{landingPage:true})%>
+    <% } %>
+
+    <!-- Navbar -->
+
+    <!-- Jumbotron -->
+    <div id="intro" class="p-5 text-center bg-light mt-0">
+      <h1 class="mb-3 h2">Blog</h1>
+
+    </div>
+    <!-- Jumbotron -->
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="my-5">
+    <div class="container">
+      <!--Section: Content-->
+      <section class="text-center">
+        <h4 class="mb-5"><strong>Latest posts</strong></h4>
+
+
+        <div class="row">
+          <% for (let i in blog) { %>
+            <div class="col-lg-4 col-md-6 mb-4">
+              <div class="card text-start">
+                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                  <img src="<%=blog[i].thumb%>" class="img-fluid" />
+                  <a href="#!">
+                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title" style="overflow-y:scroll;max-height:3em;"><%=blog[i].title%></h5>
+                  <div class="card-text" style="overflow-y:hidden;max-height:3em;">
+                    <p><%-blog[i].content%></p>
+                  </div>
+
+                </div>
+                <a href="/blog/<%=blog[i]._id%>" class="btn btn-dark hero-btn ms-2 mb-2">Read</a>
+              </div>
+            </div>
+          <% } %>
+
+        </div>
+      </section>
+      <!--Section: Content-->
+
+      <!-- Pagination -->
+
+    </div>
+  </main>
+
+  <%- include("include/footer") %>
+  <!--Main layout-->
+
+</body>
+
+</html>

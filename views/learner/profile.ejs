@@ -1,0 +1,76 @@
+<%- include("../include/navbar",{landingPage:false}) %>
+
+<section id="profile">
+    <nav id="profile-bar" class="navbar navbar-light">
+      <% if (thumbnail && thumbnail != "") { %>
+        <img src="<%=thumbnail%>" class="nav-brand user-thumbnail" />
+
+      <% } else { %>
+        <div class="acronym-thumbnail">
+          <h2 id="acronymThumb"></h2>
+        </div>
+      <% } %>
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <h3 class="user-name text-light"><%= fullName %></h3>
+          <p class='text-light'><%= school %></p>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <button type="button" class="btn btn-light user-btn" onclick="location.href='/logout'">Log Out</button>
+      </ul>
+
+  </section>
+  <section id="dashboard">
+    <div class="row">
+      <%- include("../include/menu") %>
+      <div class="tab-content col-lg-9">
+
+        <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+          <h3>My Profile</h3>
+
+          <form class="profile-form mt-3" action="/profile" method="post" id="profile-form">
+            <div class="alert alert-danger visually-hidden" role="alert" id="alertMsg">
+            </div>
+              <p class="secondary-text" style="margin-bottom:0;">Email</p>
+              <input type="text" class="input-text form-control-plaintext" value="<%= email %>" readonly>
+              <p class="secondary-text" style="margin-bottom:0;">Full Name</p>
+              <input type="text" id="fn-input" name="fn" class="input-text form-control" value="<%= fullName %>" disabled>
+              <p class="secondary-text" style="margin-bottom:0;">School</p>
+              <input type="text" id="ins-input" name="ins" class="input-text form-control" value="<%= school %>" disabled>
+
+              <div class="row mt-3">
+                <div class="col-7 text-right" id="editButtonDiv">
+                  <button type="button" name="edit-btn" class="btn btn-dark hero-btn" onclick="toEditMode(this)">Edit</button>
+                </div>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <%- include("../include/footer") %>
+
+  <script type="text/javascript" src="../../static/js/profile.js">
+  </script>
+
+  <% if (!thumbnail || thumbnail === ""){ %>
+  <script type="text/javascript">
+    function createAcronym(x) {
+      let text = "";
+      x = x.split(' ');
+      for (i = 0; i < 2; i++) {
+        if (x[i]) {
+          text += x[i].substr(0, 1);
+        }
+      }
+
+      $("#acronymThumb").html(text);
+    }
+    createAcronym("<%= fullName %>");
+  </script>
+  <% } %>
